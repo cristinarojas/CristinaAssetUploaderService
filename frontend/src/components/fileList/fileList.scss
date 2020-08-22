@@ -1,9 +1,11 @@
+@import "../../sass/_dependencies.scss";
+
 .fileList {
     height: 100vh;
-    background-color: #eaf1f4;
+    background-color: $blueA;
 
     H2  {
-         color: #c78665;
+         color: $orangeA;
          margin: 0px;
          padding: 15px;
     }

@@ -1,3 +1,5 @@
+@import "../../sass/_dependencies.scss";
+
 .mainContainer {
   display: flex;
   flex-direction: row;
@@ -20,19 +22,19 @@
           }
       
           .customFileUpload {
-              border: 1px solid #ccc;
+              border: 1px solid $blueB;
               display: inline-block;
               padding: 16px 12px;
               cursor: pointer;
               height: 20px;
 
               &:hover {
-                  background-color: #eaf1f4;
+                  background-color: $blueA;
               }
           }
 
           .uploadAWS {
-              border: 1px solid #ccc;
+              border: 1px solid $blueB;
               display: inline-block;
               padding: 16px 12px;
               cursor: pointer;
@@ -40,7 +42,7 @@
               margin-left: 25px; 
               
               &:hover {
-                  background-color: #eaf1f4;
+                  background-color: $blueA;
               }
           }
       }
@@ -55,7 +57,7 @@
               margin-left: 2px;
               padding: 5px;
               font-size: 12px;
-              background-color: white;
+              background-color: $white;
           }
 
           .outputFile {

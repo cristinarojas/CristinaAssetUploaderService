@@ -6,8 +6,6 @@ import './fileList.scss';
 
 const Filelist = ({ filesInS3 }) => {
 
-    console.log('filesInS3 --->', filesInS3)
-
   return ( 
     <section className="fileList">
         <h2>Current files in S3: </h2>

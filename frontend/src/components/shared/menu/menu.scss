@@ -1,3 +1,5 @@
+@import "../../../sass/_dependencies.scss";
+
 .menuContainer {
   height: 100%;
   width: 50%;
@@ -7,29 +9,29 @@
   justify-content: flex-end;
 
   ul {
-      display: flex;
-      list-style: none;
+    display: flex;
+    list-style: none;
 
-      li {
-          margin: 20px;
-          display: flex;
-          align-items: center;
-          width: 154px;
+    li {
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        width: 154px;
 
-          &:hover {
-              
-              img {
-                  display: block;
-              }
-          }
+        &:hover {
+            
+            img {
+                display: block;
+            }
+        }
 
-          img {
-              height: 25px;
-              display: none;
-          }
+        img {
+            height: 25px;
+            display: none;
+        }
 
-          a {
-          color: #121f38;
+        a {
+          color: $ligthBlack;
           text-decoration: none;
           font-size: 12px;
           text-transform: uppercase;
@@ -38,7 +40,7 @@
           &:hover {
               cursor: pointer;
           }
-          }
-      }
+        }
+    }
   }
 }
