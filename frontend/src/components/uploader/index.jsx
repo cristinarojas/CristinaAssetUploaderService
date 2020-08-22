@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 
 // Components
-import Filelist from '../fileList'
+import Filelist from '../fileList';
+import Message from '../shared/message';
 
 // Styles 
 import './uploader.scss';
@@ -12,6 +13,7 @@ const Uploader = () => {
   // Local State
   const [showImage, setShowImage] = useState(false);
   const [ filesInS3, setFilesInS3] = useState(0);
+  const [showMessage, setShowMessage] = useState(false);
 
   // Handle image
   const loadFile = (e) => {
@@ -23,6 +25,13 @@ const Uploader = () => {
 
     setShowImage(true);
   };
+
+  // Upload to AWS S3
+  const handleUpload = () => {
+    console.log('entra!!!');
+    // error set error message as a prop or good also prop
+    setShowMessage(true);
+  }
 
   return ( 
     <section className="mainContainer">
@@ -48,7 +57,9 @@ const Uploader = () => {
           
           {
             showImage ? (
-              <label htmlFor="fileUpload" className="uploadAWS">Upload to S3
+              <label 
+                onClick={handleUpload}
+                className="uploadAWS">Upload to S3
             </label>
             ) : ''
           }
@@ -67,11 +78,11 @@ const Uploader = () => {
             id="output" 
           />
         </section>
+
+        {
+          showMessage ? <Message /> : ''
+        }
       </section>
-
-
-
-
     </section>
   )
 }
