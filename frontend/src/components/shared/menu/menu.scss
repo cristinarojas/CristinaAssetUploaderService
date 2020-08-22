@@ -1,0 +1,44 @@
+.menuContainer {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+
+  ul {
+      display: flex;
+      list-style: none;
+
+      li {
+          margin: 20px;
+          display: flex;
+          align-items: center;
+          width: 154px;
+
+          &:hover {
+              
+              img {
+                  display: block;
+              }
+          }
+
+          img {
+              height: 25px;
+              display: none;
+          }
+
+          a {
+          color: #121f38;
+          text-decoration: none;
+          font-size: 12px;
+          text-transform: uppercase;
+          margin: 5px;
+
+          &:hover {
+              cursor: pointer;
+          }
+          }
+      }
+  }
+}

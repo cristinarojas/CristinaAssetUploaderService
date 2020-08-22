@@ -1,0 +1,30 @@
+.uploaderContainer {
+    width: 100%;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .selectorContainer {
+        input[type="file"] {
+            display: none;
+        }
+    
+        .customFileUpload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 16px 12px;
+            cursor: pointer;
+            height: 20px;
+        }
+    }
+
+    .imageContainer {
+        margin-top: 50px;
+
+        .outputFile {
+            width: 500px;
+        }
+    }
+}
