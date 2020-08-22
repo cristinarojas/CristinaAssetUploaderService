@@ -1,30 +1,67 @@
-.uploaderContainer {
-    width: 100%;
-    height: 800px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.mainContainer {
+  display: flex;
+  flex-direction: row;
 
-    .selectorContainer {
-        input[type="file"] {
-            display: none;
-        }
-    
-        .customFileUpload {
-            border: 1px solid #ccc;
-            display: inline-block;
-            padding: 16px 12px;
-            cursor: pointer;
-            height: 20px;
-        }
-    }
+  .allFileContainer {
+    width: 29%;
+  }
 
-    .imageContainer {
-        margin-top: 50px;
+  .uploaderContainer {
+      width: 70%;
+      height: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
 
-        .outputFile {
-            width: 500px;
-        }
-    }
+      .selectorContainer {
+          input[type="file"] {
+              display: none;
+          }
+      
+          .customFileUpload {
+              border: 1px solid #ccc;
+              display: inline-block;
+              padding: 16px 12px;
+              cursor: pointer;
+              height: 20px;
+
+              &:hover {
+                  background-color: #eaf1f4;
+              }
+          }
+
+          .uploadAWS {
+              border: 1px solid #ccc;
+              display: inline-block;
+              padding: 16px 12px;
+              cursor: pointer;
+              height: 20px;
+              margin-left: 25px; 
+              
+              &:hover {
+                  background-color: #eaf1f4;
+              }
+          }
+      }
+
+      .imageContainer {
+          margin-top: 50px;
+          position: relative;
+
+          .fileInfo {
+              position: absolute;
+              margin-top: 20px;
+              margin-left: 2px;
+              padding: 5px;
+              font-size: 12px;
+              background-color: white;
+          }
+
+          .outputFile {
+              box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+              width: 500px;
+          }
+      }
+  }
 }
