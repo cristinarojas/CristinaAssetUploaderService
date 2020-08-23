@@ -11,6 +11,7 @@
   },
   "author": "Cristina Rojas",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "@hot-loader/react-dom": "^16.13.0",
     "babel-loader": "^8.1.0",
