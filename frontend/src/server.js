@@ -1,6 +1,7 @@
 // Dependencies
 import express from 'express'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpack from 'webpack'
@@ -14,7 +15,7 @@ import clientRender from './render/clientRender.js'
 
 // Environment
 const isProduction = process.env.NODE_ENV === 'production'
-const __dirname = path.resolve()
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // Express Application
 const app = express()
