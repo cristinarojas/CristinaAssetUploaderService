@@ -14,6 +14,7 @@ import clientRender from './render/clientRender.js'
 
 // Environment
 const isProduction = process.env.NODE_ENV === 'production'
+const __dirname = path.resolve()
 
 // Express Application
 const app = express()
