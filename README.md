@@ -10,9 +10,9 @@ Asset Uploader Service By Cristina Elizabeth Rojas Zamora
 
 ###### ➜ backend git:(master)
 
-`Run npm install`
+Run `npm install`
 
-`Run npm run dev`
+Run `npm run dev`
 
 http://localhost:5000/
 
@@ -20,8 +20,8 @@ http://localhost:5000/
 
 ###### ➜ frontend git:(master)
 
-`Run npm install`
+Run `npm install`
 
-`Run npm start`
+Run `npm start`
 
 http://localhost:3000/
