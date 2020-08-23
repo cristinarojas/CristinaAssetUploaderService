@@ -2,6 +2,8 @@
 import React, { createContext, useState, useEffect } from 'react'
 import fetch from 'isomorphic-fetch'
 
+const apiUrl = 'http://localhost:5000'
+
 export const AppContext = createContext({
   state: {}
 })
@@ -22,7 +24,7 @@ const AppProvider = ({ id, children }) => {
     const fileData = new FormData()
     fileData.append('file', selectedFile)
 
-    const response = await fetch('http://localhost:5000/upload', {
+    const response = await fetch(`${apiUrl}/upload`, {
       method: 'POST',
       body: fileData
     })
@@ -39,7 +41,7 @@ const AppProvider = ({ id, children }) => {
 
   // Method to get all the files that are in Amazon S3
   const showFiles = async () => {
-    const response = await fetch('http://localhost:5000/files', {
+    const response = await fetch(`${apiUrl}/files`, {
       method: 'GET'
     })
 
