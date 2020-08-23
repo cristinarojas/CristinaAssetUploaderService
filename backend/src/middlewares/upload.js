@@ -1,5 +1,5 @@
 // Dependencies
-import multer from 'multer' // Middleware to habdle the endpoint
+import multer from 'multer' // Middleware to habdle the endpoints
 import AWS from 'aws-sdk' // Importing the AWS SDK for Node.js
 import { v4 as uuidv4 } from 'uuid' // To set the unique identifier for the asset
 
@@ -10,43 +10,53 @@ export default server => {
     // Amazon Simple Storage Service (Amazon S3)
     accessKeyId: process.env.ACCESS_KEY_ID, // Given by Amazon
     secretAccessKey: process.env.SECRET_ACCESS_KEY, // Given by Amazon
-    httpOptions: { timeout: 60000 }
+    httpOptions: { timeout: 60000 } // specifying a default timeout
   })
 
   // Multer configuration (middleware)
   const storage = multer.memoryStorage({
+    // where the files will be saved
     destination: function (req, file, callback) {
-      callback(null, '') // where the files will be saved
+      callback(null, '')
     }
   })
 
-  const upload = multer({ storage }).single('file') // Middleware setup
+  // Middleware setup
+  const upload = multer({ storage }).single('file') // file types
 
-  // Endpoints //
-  // 1 HTTP POST endpoint
+  /**************** Endpoints ****************/
+
+  // HTTP POST endpoint: to upload the asset to and a unique identifier for the asset
   server.post('/upload', upload, (req, res, next) => {
-    // File details
-    let myFile = req.file.originalname.split('.') // Getting the originalname string into an array to get the info
+    // Params are the path, middleware, callback
+
+    // Getting the file details
+    let myFile = req.file.originalname.split('.') // Turning the original name string into an array to get the info
     const fileType = myFile[myFile.length - 1] // Getting the file extension (las position of the array)
+
+    // This object have information that the s3.upload need to be executed
     const params = {
-      // This object have information that the s3.upload need to be executed
-      Bucket: process.env.BUCKET_NAME,
-      Key: `${uuidv4()}_${myFile[0]}.${fileType}`,
-      Body: req.file.buffer,
-      ACL: 'public-read'
+      Bucket: process.env.BUCKET_NAME, // S3 bucket name (like folder name in S3)
+      Key: `${uuidv4()}_${myFile[0]}.${fileType}`, // Setting the unique identifier
+      Body: req.file.buffer, // Getting the file buffer
+      ACL: 'public-read' // In that way we can see the files
     }
 
-    // Execution the upload function that is an instance of s3
+    // Execution the upload of s3
     s3.upload(params, (error, data) => {
+      // Passing the params object & callback
+
+      // If an error happen
       if (error) {
-        res.status(500).send(error)
+        res.status(500).send(error) // send error, status: 500
       }
 
+      // If everything was good then send data, status: 200
       res.status(200).send(data)
     })
   })
 
-  // 3 HTTP GET endpoint
+  // HTTP GET endpoint: request is made to the service for a particular asset id
   // Get file for a particular asset id
   server.get('/export/:file/:time?', (req, res, next) => {
     // ES6 Destructuring to get the file name & the time that is on the url
@@ -54,7 +64,7 @@ export default server => {
     // Converting time to milliseconds
     let timeout = time * 1000
 
-    // Re-declaring S3 to set the timeout of the URL
+    // Declaring S3 to set the timeout of the URL & see the change in the terminal
     const s3Options = {
       accessKeyId: process.env.ACCESS_KEY_ID, // Given by Amazon
       secretAccessKey: process.env.SECRET_ACCESS_KEY, // Given by Amazon
@@ -64,14 +74,16 @@ export default server => {
     // If we change the timeout on the ULR we can see the timaeout changed in the terminal
     console.log('s3Options.httpOptions --->', s3Options.httpOptions)
 
-    //
+    // Aws Configuration object storage service with the s3 options that have specific timeout
     const s3WithTimeout = new AWS.S3(s3Options)
 
+    // This object have information that the s3.upload need to be executed
     let params = {
       Bucket: process.env.BUCKET_NAME,
       Key: file
     }
 
+    // Getting the file
     s3WithTimeout.getObject(params, function (err, data) {
       // If the file name pased in the URL do not exist then show an error to the user (status 500)
       if (err) {
@@ -92,13 +104,17 @@ export default server => {
 
   // Get all the files that are in s3
   server.get('/files', (req, res, next) => {
+    // This object have information that the s3.upload need to be executed
     let params = {
       Bucket: process.env.BUCKET_NAME
     }
 
+    // Getting all the files that are in Amazon S3
     s3.listObjects(params, function (err, data) {
+      // If an error happen throw error
       if (err) throw err
 
+      // If the request was successfully (status 200)
       res.status(200).send(data.Contents)
     })
   })
