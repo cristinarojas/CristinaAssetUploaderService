@@ -10,7 +10,7 @@ import cors from 'cors'
 import webpackConfig from '../webpack.config.babel.js'
 
 // Client Render
-import clientRender from './render/clientRender'
+import clientRender from './render/clientRender.js'
 
 // Environment
 const isProduction = process.env.NODE_ENV === 'production'
