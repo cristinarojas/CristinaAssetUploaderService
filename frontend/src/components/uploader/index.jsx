@@ -73,14 +73,15 @@ const Uploader = () => {
 
         <section className={styles.fileContainer}>
           {selectedFile ? <label className={styles.fileInfo}>{selectedFile.name}</label> : ''}
+
           {selectedFile && selectedFile.type.includes('image') && (
-            <img src={preview} className={styles.outputFile} />
+            <img src={preview} className={styles.imgFile} />
           )}
 
           {selectedFile && selectedFile.type.includes('application') && (
-            <span>
-              <i class="fas fa-file"></i>
-            </span>
+            <section className={styles.documentFile}>
+              <img src="/images/document.png" />
+            </section>
           )}
         </section>
 

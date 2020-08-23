@@ -57,16 +57,25 @@
 
       .fileInfo {
         position: absolute;
+        bottom: -30px;
         margin-top: 20px;
         margin-left: 2px;
         padding: 5px;
-        font-size: 12px;
-        background-color: $white;
+        font-size: 16px;
+        font-style: italic;
+        background-color: $blueA;
       }
 
-      .outputFile {
+      img {
         box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
-        width: 500px;
+        width: 350px;
+      }
+
+      .documentFile {
+        img {
+          width: 60px;
+          height: 60px;
+        }
       }
 
       i {

@@ -1,8 +1,11 @@
-@import "../../../sass/_dependencies.scss";
+@import '../../../sass/_dependencies.scss';
 
 .messageContainer {
-    color: green;
-    font-size: 16px;
-    margin-top: 40px;
-    font-weight: 600;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-top: 40px;
+  padding: 18px;
+  color: $greenA;
+  background-color: $greenC;
+  border-color: $greenB;
 }

@@ -16,8 +16,6 @@ const Filelist = () => {
     showFiles()
   }, [])
 
-  console.log('allFiles =====>', allFiles)
-
   return (
     <section className={styles.fileList}>
       <h2>Current files in S3: </h2>
