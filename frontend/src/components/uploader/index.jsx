@@ -52,7 +52,7 @@ const Uploader = () => {
   return (
     <section className={styles.mainContainer}>
       <section className={styles.allFileContainer}>
-        <Filelist filesInS3={filesInS3} />
+        <Filelist />
       </section>
 
       <section className={styles.uploaderContainer}>
@@ -63,9 +63,9 @@ const Uploader = () => {
           <input id="fileUpload" type="file" name="file" onChange={e => loadFile(e)} />
 
           {selectedFile ? (
-            <label onClick={handleUpload} className={styles.uploadAWS}>
+            <button onClick={handleUpload} className={styles.uploadAWS} disabled={showMessage}>
               Upload to S3
-            </label>
+            </button>
           ) : (
             ''
           )}

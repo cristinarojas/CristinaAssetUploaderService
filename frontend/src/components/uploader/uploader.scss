@@ -36,17 +36,14 @@
       .uploadAWS {
         border: 1px solid $blueB;
         display: inline-block;
-        padding: 16px 12px;
+        padding: 15px;
         cursor: pointer;
-        height: 20px;
         margin-left: 25px;
-
-        border: 1px solid gree;
-        background-color: green;
+        background-color: $blueC;
         color: white;
 
         &:hover {
-          background-color: $blueA;
+          background-color: $blueD;
         }
       }
     }
