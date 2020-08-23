@@ -1,0 +1,18 @@
+{
+  "apps": [
+    {
+      "name": "frontend",
+      "script": "./frontend/src/server.js",
+      "watch": true,
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "backend",
+      "script": "./backend/src/index.js",
+      "instances": 4,
+      "exec_mode": "cluster"
+    }
+  ]
+}
