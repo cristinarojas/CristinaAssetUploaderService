@@ -87,7 +87,7 @@ const Uploader = () => {
             <img src={preview} className={styles.imgFile} />
           )}
 
-          {selectedFile && (
+          {selectedFile && !selectedFile.type.includes('image') && (
             <section className={styles.documentFile}>
               <img src="/images/document.png" />
             </section>
