@@ -11,6 +11,9 @@ const Filelist = () => {
   // Contexts
   const { showFiles, allFiles } = useContext(AppContext)
 
+  // Conts for time
+  const time = 60
+
   // Effects
   useEffect(() => {
     showFiles()
@@ -26,20 +29,22 @@ const Filelist = () => {
 
             return (
               <li key={`file-${i}`}>
-                {imgType ? (
-                  <img
-                    src={`https://cristinaassetuploaderservice.s3-us-west-1.amazonaws.com/${file.Key}`}
-                  />
-                ) : (
-                  <img src="/images/document.png" />
-                )}
+                <a href={`http://localhost:5000/export/${file.Key}/${time}`}>
+                  {imgType ? (
+                    <img
+                      src={`https://cristinaassetuploaderservice.s3-us-west-1.amazonaws.com/${file.Key}`}
+                    />
+                  ) : (
+                    <img src="/images/document.png" />
+                  )}
 
-                <span>
                   <span>
-                    File Name: <i className="fa fa-cloud-upload"></i>
+                    <span>
+                      File Name: <i className="fa fa-cloud-upload"></i>
+                    </span>
+                    {file.Key}
                   </span>
-                  {file.Key}
-                </span>
+                </a>
               </li>
             )
           })}

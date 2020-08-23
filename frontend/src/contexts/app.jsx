@@ -11,6 +11,9 @@ const AppProvider = ({ id, children }) => {
   const [state, setState] = useState({})
   const [url, setUrl] = useState('')
   const [allFiles, setAllFiles] = useState([])
+  const [exportedFile, setExportedFile] = useState()
+
+  console.log('exportedFile --->', exportedFile)
 
   // Methods
 
