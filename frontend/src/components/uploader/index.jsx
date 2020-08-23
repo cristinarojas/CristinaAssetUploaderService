@@ -19,7 +19,7 @@ const Uploader = () => {
   const [preview, setPreview] = useState()
 
   // Contexts
-  const { uploadFile } = useContext(AppContext)
+  const { uploadFile, url } = useContext(AppContext)
 
   // Effects
   useEffect(() => {
@@ -71,12 +71,20 @@ const Uploader = () => {
           )}
         </section>
 
-        <section className={styles.imageContainer}>
+        <section className={styles.fileContainer}>
           {selectedFile ? <label className={styles.fileInfo}>{selectedFile.name}</label> : ''}
-          {selectedFile && <img src={preview} className={styles.outputFile} />}
+          {selectedFile && selectedFile.type.includes('image') && (
+            <img src={preview} className={styles.outputFile} />
+          )}
+
+          {selectedFile && selectedFile.type.includes('application') && (
+            <span>
+              <i class="fas fa-file"></i>
+            </span>
+          )}
         </section>
 
-        {showMessage ? <Message /> : ''}
+        {url ? <Message url={url} /> : ''}
       </section>
     </section>
   )

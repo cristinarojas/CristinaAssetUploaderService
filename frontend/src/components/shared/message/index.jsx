@@ -4,10 +4,11 @@ import React from 'react'
 // Styles
 import styles from './Message.scss'
 
-const Message = ({ filesInS3 }) => {
+const Message = ({ url }) => {
   return (
     <section className={styles.messageContainer}>
-      <span>File was uploaded successfully!</span>
+      <span>File uploaded successfully at:</span>
+      <p>{url}</p>
     </section>
   )
 }

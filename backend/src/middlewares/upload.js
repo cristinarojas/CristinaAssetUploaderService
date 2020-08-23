@@ -1,6 +1,7 @@
 // Dependencies
 import multer from 'multer' // Middleware to habdle the endpoint
 import AWS from 'aws-sdk' // Importing the aws sdk to handle the code for save the image
+import { v4 as uuidv4 } from 'uuid'
 
 // Exporting file
 export default server => {
@@ -14,7 +15,6 @@ export default server => {
   // Multer configuration (middleware)
   const storage = multer.memoryStorage({
     destination: function (req, file, callback) {
-      console.log('FILE====', file)
       callback(null, '') // where the files will be saved
     }
   })
@@ -22,7 +22,6 @@ export default server => {
   const upload = multer({ storage }).single('file') // Middleware setup
 
   // Endpoints //
-
   // 1 HTTP POST endpoint
   server.post('/upload', upload, (req, res, next) => {
     // File details
@@ -31,8 +30,9 @@ export default server => {
     const params = {
       // This object have information that the s3.upload need to be executed
       Bucket: process.env.BUCKET_NAME,
-      Key: `${myFile[0]}.${fileType}`,
-      Body: req.file.buffer
+      Key: `${uuidv4()}_${myFile[0]}.${fileType}`,
+      Body: req.file.buffer,
+      ACL: 'public-read'
     }
 
     // Execution the upload function that is an instance of s3
@@ -41,12 +41,21 @@ export default server => {
         res.status(500).send(error)
       }
 
-      console.log('res --->', res)
-      console.log('data --->', data)
-
       res.status(200).send(data)
     })
+  })
 
-    // Get all the files that are in s3
+  // 3 HTTP GET endpoint
+  // Get all the files that are in s3
+  server.get('/files', (req, res, next) => {
+    var params = {
+      Bucket: process.env.BUCKET_NAME
+    }
+
+    s3.listObjects(params, function (err, data) {
+      if (err) throw err
+
+      res.status(200).send(data.Contents)
+    })
   })
 }
