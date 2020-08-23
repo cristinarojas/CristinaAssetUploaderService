@@ -6,7 +6,7 @@ export default function clientRender() {
   return (req, res) =>
     res.send(
       html({
-        title: 'Uploader'
+        title: 'Cristina Rojas . Uploader'
       })
     )
 }
