@@ -2,8 +2,8 @@
 import React from 'react'
 
 // Components
-import Header from './components/header'
-import Uploader from './components/uploader'
+import Header from './components/Header'
+import Uploader from './components/Uploader'
 
 // React context
 import AppProvider from './contexts/app'
