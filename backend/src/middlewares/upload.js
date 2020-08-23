@@ -14,11 +14,12 @@ export default server => {
   // Multer configuration (middleware)
   const storage = multer.memoryStorage({
     destination: function (req, file, callback) {
+      console.log('FILE====', file)
       callback(null, '') // where the files will be saved
     }
   })
 
-  const upload = multer({ storage }).single('image') // Middleware setup
+  const upload = multer({ storage }).single('file') // Middleware setup
 
   // Endpoints //
 

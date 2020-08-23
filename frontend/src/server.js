@@ -4,6 +4,7 @@ import path from 'path'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpack from 'webpack'
+import cors from 'cors'
 
 // Webpack Configuration
 import webpackConfig from '../webpack.config.babel'
@@ -33,6 +34,8 @@ if (!isProduction) {
     next()
   })
 }
+
+app.use(cors())
 
 // Public directory
 app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')))
