@@ -16,6 +16,7 @@ export default function html({ title }) {
       <head>
         <meta charset="utf-8">
         <title>${title}</title>
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
         ${link}
       </head>
