@@ -1,4 +1,4 @@
-require('@babel/register')
+import '@babel/register'
 
 import {
   devtool,
