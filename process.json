@@ -5,14 +5,19 @@
       "script": "./frontend/src/server.js",
       "watch": true,
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "PORT": "3000"
       }
     },
     {
       "name": "backend",
       "script": "./backend/src/index.js",
       "instances": 4,
-      "exec_mode": "cluster"
+      "exec_mode": "cluster",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "5000"
+      }
     }
   ]
 }
