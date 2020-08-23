@@ -5,8 +5,8 @@ import React, { useState, useEffect, useContext } from 'react'
 import { AppContext } from '../../contexts/app'
 
 // Components
-import Filelist from '../fileList'
-import Message from '../shared/message'
+import Filelist from '../FileList'
+import Message from '../shared/Message'
 
 // Styles
 import styles from './Uploader.scss'
