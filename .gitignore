@@ -16,6 +16,7 @@ build
 .env.test.local
 .env.production.local
 .env
+/frontend/public/app/*
 
 npm-debug.log*
 yarn-debug.log*
