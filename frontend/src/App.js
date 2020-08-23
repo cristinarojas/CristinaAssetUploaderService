@@ -5,16 +5,16 @@ import React from 'react'
 import Header from './components/header'
 import Uploader from './components/uploader'
 
-// Styles
-import './app.scss'
+// React context
+import AppProvider from './contexts/app'
 
 function App() {
   return (
-    <>
+    <AppProvider>
       <Header />
 
       <Uploader />
-    </>
+    </AppProvider>
   )
 }
 

@@ -1,17 +1,16 @@
 // Dependencies
-import React from 'react';
+import React from 'react'
 
-// Styles 
-import './fileList.scss';
+// Styles
+import styles from './FileList.scss'
 
 const Filelist = ({ filesInS3 }) => {
-
-  return ( 
-    <section className="fileList">
-        <h2>Current files in S3: </h2>
-        <span>{filesInS3}</span>
+  return (
+    <section className={styles.fileList}>
+      <h2>Current files in S3: </h2>
+      <span>{filesInS3}</span>
     </section>
   )
 }
 
-export default Filelist;
+export default Filelist

@@ -1,16 +1,15 @@
 // Dependencies
-import React from 'react';
+import React from 'react'
 
-// Styles 
-import './message.scss';
+// Styles
+import styles from './Message.scss'
 
 const Message = ({ filesInS3 }) => {
-
-  return ( 
-    <section className="messageContainer">
-        <span>File was uploaded successfully!</span>
+  return (
+    <section className={styles.messageContainer}>
+      <span>File was uploaded successfully!</span>
     </section>
   )
 }
 
-export default Message;
+export default Message

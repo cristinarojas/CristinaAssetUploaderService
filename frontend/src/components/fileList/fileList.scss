@@ -1,16 +1,16 @@
-@import "../../sass/_dependencies.scss";
+@import '../../sass/_dependencies.scss';
 
 .fileList {
-    height: 100vh;
-    background-color: $blueA;
+  height: 100vh;
+  background-color: $blueA;
 
-    H2  {
-         color: $orangeA;
-         margin: 0px;
-         padding: 15px;
-    }
+  H2 {
+    color: $orangeA;
+    margin: 0px;
+    padding: 15px;
+  }
 
-    span {
-        padding: 30px;
-    }
+  span {
+    padding: 30px;
+  }
 }

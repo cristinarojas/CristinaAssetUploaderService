@@ -1,4 +1,4 @@
-@import "../../sass/_dependencies.scss";
+@import '../../sass/_dependencies.scss';
 
 .mainContainer {
   display: flex;
@@ -9,61 +9,65 @@
   }
 
   .uploaderContainer {
-      width: 70%;
-      height: 800px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+    width: 70%;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-      .selectorContainer {
-          input[type="file"] {
-              display: none;
-          }
-      
-          .customFileUpload {
-              border: 1px solid $blueB;
-              display: inline-block;
-              padding: 16px 12px;
-              cursor: pointer;
-              height: 20px;
-
-              &:hover {
-                  background-color: $blueA;
-              }
-          }
-
-          .uploadAWS {
-              border: 1px solid $blueB;
-              display: inline-block;
-              padding: 16px 12px;
-              cursor: pointer;
-              height: 20px;
-              margin-left: 25px; 
-              
-              &:hover {
-                  background-color: $blueA;
-              }
-          }
+    .selectorContainer {
+      input[type='file'] {
+        display: none;
       }
 
-      .imageContainer {
-          margin-top: 50px;
-          position: relative;
+      .customFileUpload {
+        border: 1px solid $blueB;
+        display: inline-block;
+        padding: 16px 12px;
+        cursor: pointer;
+        height: 20px;
 
-          .fileInfo {
-              position: absolute;
-              margin-top: 20px;
-              margin-left: 2px;
-              padding: 5px;
-              font-size: 12px;
-              background-color: $white;
-          }
-
-          .outputFile {
-              box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
-              width: 500px;
-          }
+        &:hover {
+          background-color: $blueA;
+        }
       }
+
+      .uploadAWS {
+        border: 1px solid $blueB;
+        display: inline-block;
+        padding: 16px 12px;
+        cursor: pointer;
+        height: 20px;
+        margin-left: 25px;
+
+        border: 1px solid gree;
+        background-color: green;
+        color: white;
+
+        &:hover {
+          background-color: $blueA;
+        }
+      }
+    }
+
+    .imageContainer {
+      margin-top: 50px;
+      position: relative;
+
+      .fileInfo {
+        position: absolute;
+        margin-top: 20px;
+        margin-left: 2px;
+        padding: 5px;
+        font-size: 12px;
+        background-color: $white;
+      }
+
+      .outputFile {
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 500px;
+      }
+    }
   }
 }

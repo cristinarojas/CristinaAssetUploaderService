@@ -1,21 +1,18 @@
 // Dependencies
-import React from 'react';
+import React from 'react'
 
 // Components
-import Menu from '../shared/menu';
+import Menu from '../shared/Menu'
 
-// Styles 
-import './header.scss';
-
-// Assets
-import logo from '../../assets/logo.png';
+// Styles
+import styles from './Header.scss'
 
 const Header = () => {
-  return ( 
-    <section className="headerContainer">
-      <section className="logo">
-          <img src={logo} alt="Logo" />
-          <h1>Cristina Rojas . Uploader</h1>
+  return (
+    <section className={styles.headerContainer}>
+      <section className={styles.logo}>
+        <img src="/images/logo.png" alt="Logo" />
+        <h1>Cristina Rojas . Uploader</h1>
       </section>
 
       <Menu />
@@ -23,4 +20,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default Header

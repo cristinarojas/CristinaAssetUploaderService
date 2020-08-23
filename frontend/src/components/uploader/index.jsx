@@ -1,90 +1,85 @@
 // Dependencies
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react'
+
+// Contexts
+import { AppContext } from '../../contexts/app'
 
 // Components
-import Filelist from '../fileList';
-import Message from '../shared/message';
+import Filelist from '../fileList'
+import Message from '../shared/message'
 
-// Styles 
-import './uploader.scss';
-
+// Styles
+import styles from './Uploader.scss'
 
 const Uploader = () => {
   // Local State
-  const [showImage, setShowImage] = useState(false);
-  const [ filesInS3, setFilesInS3] = useState(0);
-  const [showMessage, setShowMessage] = useState(false);
+  const [filesInS3, setFilesInS3] = useState(0)
+  const [showMessage, setShowMessage] = useState(false)
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [preview, setPreview] = useState()
+
+  // Contexts
+  const { uploadFile } = useContext(AppContext)
+
+  // Effects
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(null)
+      return
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile)
+    setPreview(objectUrl)
+  }, [selectedFile])
 
   // Handle image
-  const loadFile = (e) => {
-    let image = document.getElementById('output');
-    let binaryData = [];
+  const loadFile = e => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(null)
+      return
+    }
 
-    binaryData.push(e.target.files[0]); 
-    image.src = window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"})) 
-
-    setShowImage(true);
-  };
+    setSelectedFile(e.target.files[0])
+  }
 
   // Upload to AWS S3
   const handleUpload = () => {
-    console.log('entra!!!');
+    uploadFile(selectedFile)
     // error set error message as a prop or good also prop
-    setShowMessage(true);
+    setShowMessage(true)
   }
 
-  return ( 
-    <section className="mainContainer">
-
-      <section className="allFileContainer">
-        <Filelist 
-          filesInS3={filesInS3} 
-        />
+  return (
+    <section className={styles.mainContainer}>
+      <section className={styles.allFileContainer}>
+        <Filelist filesInS3={filesInS3} />
       </section>
 
-      <section className="uploaderContainer">
-        <section className="selectorContainer">
-          <label htmlFor="fileUpload" className="customFileUpload">
+      <section className={styles.uploaderContainer}>
+        <section className={styles.selectorContainer}>
+          <label htmlFor="fileUpload" className={styles.customFileUpload}>
             <i className="fa fa-cloud-upload"></i> Select file
           </label>
-          <input 
-            id="fileUpload" 
-            type="file" 
-            accept="image/*" 
-            name="image"  
-            onChange={(e) => loadFile(e)}
-          />
-          
-          {
-            showImage ? (
-              <label 
-                onClick={handleUpload}
-                className="uploadAWS">Upload to S3
+          <input id="fileUpload" type="file" name="file" onChange={e => loadFile(e)} />
+
+          {selectedFile ? (
+            <label onClick={handleUpload} className={styles.uploadAWS}>
+              Upload to S3
             </label>
-            ) : ''
-          }
-
+          ) : (
+            ''
+          )}
         </section>
 
-
-        <section className="imageContainer">
-          {
-            showImage ? (
-            <label className="fileInfo">Cristinawiththefish.jpg</label>
-            ) : ''
-          }
-          <img 
-            className="outputFile"
-            id="output" 
-          />
+        <section className={styles.imageContainer}>
+          {selectedFile ? <label className={styles.fileInfo}>{selectedFile.name}</label> : ''}
+          {selectedFile && <img src={preview} className={styles.outputFile} />}
         </section>
 
-        {
-          showMessage ? <Message /> : ''
-        }
+        {showMessage ? <Message /> : ''}
       </section>
     </section>
   )
 }
 
-export default Uploader;
+export default Uploader
