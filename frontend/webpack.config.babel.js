@@ -1,4 +1,4 @@
-require('@babel/register');
+require('@babel/register')
 
 import {
   devtool,
@@ -9,7 +9,7 @@ import {
   output,
   plugins,
   resolve
-} from './webpack/configuration';
+} from './webpack/configuration/index.js'
 
 const webpackConfig = {
   devtool,
@@ -20,6 +20,6 @@ const webpackConfig = {
   output,
   plugins,
   resolve
-};
+}
 
-export default webpackConfig;
+export default webpackConfig
