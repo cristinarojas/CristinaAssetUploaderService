@@ -7,7 +7,7 @@ import webpack from 'webpack'
 import cors from 'cors'
 
 // Webpack Configuration
-import webpackConfig from '../webpack.config.babel'
+import webpackConfig from '../webpack.config.babel.js'
 
 // Client Render
 import clientRender from './render/clientRender'
