@@ -2,6 +2,8 @@
 import multer from 'multer' // Middleware to habdle the endpoints
 import AWS from 'aws-sdk' // Importing the AWS SDK for Node.js
 import { v4 as uuidv4 } from 'uuid' // To set the unique identifier for the asset
+import fetch from 'node-fetch' // To do fetch in node
+import bodyParser from 'body-parser'
 
 // Exporting server file
 export default server => {
@@ -43,17 +45,48 @@ export default server => {
     }
 
     // Execution the upload of s3
-    s3.upload(params, (error, data) => {
+    s3.upload(params, async (error, file) => {
       // Passing the params object & callback
+      const options = {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }
 
       // If an error happen
       if (error) {
-        res.status(500).send(error) // send error, status: 500
+        options.body = JSON.stringify({
+          status: 'error',
+          error
+        })
+      } else {
+        options.body = JSON.stringify({
+          status: 'uploaded',
+          url: file
+        })
       }
 
-      // If everything was good then send data, status: 200
-      res.status(200).send(data)
+      // Executing enpoin status
+      const rawResponse = await fetch('http://localhost:5000/status', options)
+      const { status, data } = await rawResponse.json()
+
+      res.status(status).send(data)
     })
+  })
+
+  // PUT endpoint
+  // HTTP POST endpoint: to upload the asset to and a unique identifier for the asset
+  server.put('/status', (req, res, next) => {
+    // Params are the path, middleware, callback
+    const { status, error, url } = req.body
+
+    if (status === 'uploaded') {
+      return res.json({ status: 200, data: url })
+    }
+
+    return res.json({ status: 500, data: error })
   })
 
   // HTTP GET endpoint: request is made to the service for a particular asset id
