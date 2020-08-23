@@ -11,6 +11,7 @@ This is a service that allows a user to upload an asset and then request a time 
 ###### ➜ backend git:(master)
 
 `Run npm install`
+
 `Run npm run dev`
 
 http://localhost:5000/
@@ -20,6 +21,7 @@ http://localhost:5000/
 ###### ➜ frontend git:(master)
 
 `Run npm install`
+
 `Run npm start`
 
 http://localhost:3000/
