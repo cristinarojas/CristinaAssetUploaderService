@@ -1,6 +1,6 @@
 # CristinaAssetUploaderService
 
-This is a service that allows a user to upload an asset and then request a time expiring URL to retrieve that asset
+Asset Uploader Service By Cristina Elizabeth Rojas Zamora
 
 ## 1.- Clone the project from my Github Account:
 
