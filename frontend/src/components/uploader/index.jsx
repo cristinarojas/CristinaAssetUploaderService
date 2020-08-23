@@ -45,8 +45,11 @@ const Uploader = () => {
   // Upload to AWS S3
   const handleUpload = () => {
     uploadFile(selectedFile)
-    // error set error message as a prop or good also prop
     setShowMessage(true)
+  }
+
+  const handleClick = () => {
+    setShowMessage(false)
   }
 
   return (
@@ -60,7 +63,13 @@ const Uploader = () => {
           <label htmlFor="fileUpload" className={styles.customFileUpload}>
             <i className="fa fa-cloud-upload"></i> Select file
           </label>
-          <input id="fileUpload" type="file" name="file" onChange={e => loadFile(e)} />
+          <input
+            id="fileUpload"
+            type="file"
+            name="file"
+            onChange={e => loadFile(e)}
+            onClick={handleClick}
+          />
 
           {selectedFile ? (
             <button onClick={handleUpload} className={styles.uploadAWS} disabled={showMessage}>
@@ -85,7 +94,7 @@ const Uploader = () => {
           )}
         </section>
 
-        {url ? <Message url={url} /> : ''}
+        {url && showMessage ? <Message url={url} /> : ''}
       </section>
     </section>
   )

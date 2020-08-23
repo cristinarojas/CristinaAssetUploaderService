@@ -23,7 +23,6 @@ const Filelist = () => {
         {allFiles &&
           allFiles.map((file, i) => {
             let imgType = file.Key.includes('.jpg') || file.Key.includes('.png')
-            console.log('imgType --->', imgType)
 
             return (
               <li key={`file-${i}`}>

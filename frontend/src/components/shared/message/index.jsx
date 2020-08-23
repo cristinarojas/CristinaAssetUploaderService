@@ -8,7 +8,11 @@ const Message = ({ url }) => {
   return (
     <section className={styles.messageContainer}>
       <span>File uploaded successfully at:</span>
-      <p>{url}</p>
+      <p>
+        <a href={url} target="_blank">
+          {url}
+        </a>
+      </p>
     </section>
   )
 }
