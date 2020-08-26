@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from 'uuid' // To set the unique identifier for the asse
 import fetch from 'node-fetch' // To do fetch in node
 import bodyParser from 'body-parser'
 
+const apiUrl = 'http://localhost:5000'
+
 // Exporting server file
 export default server => {
   // Aws Configuration object storage service
@@ -69,7 +71,7 @@ export default server => {
       }
 
       // Executing enpoin status
-      const rawResponse = await fetch('http://localhost:5000/status', options)
+      const rawResponse = await fetch(`${apiUrl}/status`, options)
       const { status, data } = await rawResponse.json()
 
       res.status(status).send(data)
@@ -82,7 +84,9 @@ export default server => {
     // Params are the path, middleware, callback
     const { status, error, url } = req.body
 
-    if (status === 'uploaded') {
+    console.log('PUT status --->', status)
+
+    if (!error && status === 'uploaded') {
       return res.json({ status: 200, data: url })
     }
 
@@ -105,7 +109,7 @@ export default server => {
     }
 
     // If we change the timeout on the ULR we can see the timaeout changed in the terminal
-    console.log('s3Options.httpOptions --->', s3Options.httpOptions)
+    console.log('New timeout --->', s3Options.httpOptions)
 
     // Aws Configuration object storage service with the s3 options that have specific timeout
     const s3WithTimeout = new AWS.S3(s3Options)
@@ -127,11 +131,11 @@ export default server => {
             do not exist in Amazon S3
           </p>
         `)
+      } else {
+        // If the request was successfully (status 200)
+        res.attachment(file)
+        res.status(200).send(data.Body)
       }
-
-      // If the request was successfully (status 200)
-      res.attachment(file)
-      res.status(200).send(data.Body)
     })
   })
 
