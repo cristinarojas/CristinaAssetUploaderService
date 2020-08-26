@@ -6,7 +6,7 @@ import { AppContext } from '../../contexts/app'
 
 // Components
 import Filelist from '../FileList'
-import Message from '../shared/Message'
+import Message from '../shared/message'
 
 // Styles
 import styles from './Uploader.scss'

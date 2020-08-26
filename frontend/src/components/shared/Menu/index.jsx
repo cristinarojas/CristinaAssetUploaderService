@@ -32,7 +32,7 @@ const Menu = () => {
                     <a href={option.link} target="_blank" rel="noopener noreferrer">
                       {option.name}
                     </a>
-                    <img src="/images/crissFavicon.png" alt={option.name} />
+                    <img src="/images/favicon.png" alt={option.name} />
                   </li>
                 )
               })
